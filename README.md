@@ -20,4 +20,4 @@ where PACKAGEPATH is the location of the git repository.
 
 ## Usage 
 
-See the (help)[./share/help/moviemaker.md] document, and the (examples)[./examples] folder. 
+See the [help](./share/help/moviemaker.md) document, and the [examples](./examples) folder. 
