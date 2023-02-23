@@ -1,0 +1,13 @@
+import graphics 
+import moviemaker 
+
+var mm = MovieMaker("arrow") 
+
+for (phi in 0..2*Pi:Pi/20) {
+  var g = Graphics() 
+  g.display(Arrow([-1/2*cos(phi),-1/2*sin(phi),0],[1/2*cos(phi),1/2*sin(phi),0]))
+  mm.frame(g)
+}
+
+mm.make() 
+mm.clean() 
