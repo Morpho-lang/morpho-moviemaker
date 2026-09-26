@@ -1,4 +1,19 @@
+/* ***************************************************************
+ * MovieMaker
+ * ==========
+ * Library to create movies from images.
+ **************************************************************** */
+
 import povray
+
+/* ----------------------------------------------------------------
+ * MovieMaker
+ *
+ * Creates a movie `fname`. Usage:
+ * - frame(g) renders a single frame from the Graphics object `g`
+ * - make() creates the movie using ffmpeg
+ * - clean() removes the temporary files created by frame()
+ * ---------------------------------------------------------------- */
 
 class MovieMaker {
   init(fname, framerate=30, camera=nil) {
