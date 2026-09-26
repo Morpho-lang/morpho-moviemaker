@@ -1,23 +1,13 @@
 # Morpho-moviemaker
 
-This package provides a MovieMaker class that simplifies the creation of movies with [morpho](https://github.com/Morpho-lang/morpho). 
+This package provides a MovieMaker class that simplifies the creation of movies with [morpho](https://github.com/Morpho-lang/morpho).
 
-## Installation and Prerequisites
+## Installation
 
-Before using, you must install the ffmpeg utility. On macOS you can do this with homebrew: 
+You can install the package with morphopm in the Terminal app:
 
-    brew install ffmpeg
+    morphopm install moviemaker
 
-You then need to install the package. To do this, clone this repository onto your computer in any convenient place:
+## Usage
 
-    git clone https://github.com/morpho-lang/morpho-moviemaker.git
-
-then add the location of this repository to your .morphopackages file.
-
-    echo PACKAGEPATH >> ~/.morphopackages 
-
-where PACKAGEPATH is the location of the git repository. 
-
-## Usage 
-
-See the [help](./share/help/moviemaker.md) document, and the [examples](./examples) folder. 
+See the [help](./share/help/moviemaker.md) document, and the [examples](./examples) folder.

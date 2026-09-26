@@ -1,13 +1,14 @@
-import graphics 
-import moviemaker 
+import graphics
+import moviemaker
 
-var mm = MovieMaker("arrow") 
+var cam = Camera(width=640, height=480)
+var mm = MovieMaker("arrow", camera=cam)
 
 for (phi in 0..2*Pi:Pi/20) {
-  var g = Graphics() 
+  var g = Graphics()
   g.display(Arrow([-1/2*cos(phi),-1/2*sin(phi),0],[1/2*cos(phi),1/2*sin(phi),0]))
   mm.frame(g)
 }
 
-mm.make() 
-mm.clean() 
+mm.make()
+mm.clean()

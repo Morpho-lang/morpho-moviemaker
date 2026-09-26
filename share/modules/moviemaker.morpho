@@ -1,20 +1,27 @@
-import povray 
+import povray
 
 class MovieMaker {
-  init(fname, framerate=30) {
+  init(fname, framerate=30, camera=nil) {
     self.fname=fname
     self.count=0
     self.quiet=true
     self.framerate = framerate
+    self.camera = isnil(camera) ? Camera() : camera
   }
 
-  frame(g, camera=nil, lights=nil) {
-    var pov = POVRaytracer(g, camera=camera)
-    if (!camera) {
-      pov.viewpoint = Matrix([0,0,5])
-    }
-    if (islist(lights)) pov.light=lights
-    pov.render("${self.fname}${self.count}.pov", display=false, quiet=self.quiet)
+  _frameCamera(camera, lights) {
+    var base = isnil(camera) ? self.camera : camera
+    var cam = Camera(antialias=base.antialias, width=base.width, height=base.height,
+                     viewangle=base.viewangle, viewpoint=base.viewpoint,
+                     look_at=base.look_at, sky=base.sky)
+    cam.light = isnil(lights) ? base.light : lights
+    return cam
+  }
+
+  frame(g, camera=nil, lights=nil, shadowless=false, transparent=false) {
+    var pov = POVRaytracer(g, camera=self._frameCamera(camera, lights))
+    pov.render("${self.fname}${self.count}.pov", display=false, quiet=self.quiet,
+               shadowless=shadowless, transparent=transparent)
     self.count+=1
   }
 
