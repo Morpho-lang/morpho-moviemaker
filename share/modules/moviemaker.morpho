@@ -44,8 +44,14 @@ class MovieMaker {
     system("ffmpeg -y -r ${self.framerate} -i ${self.fname}%d.png -pix_fmt yuv420p ${self.fname}.mp4")
   }
 
+  _remove(pattern) { // Delete frame files; del on Windows, rm elsewhere
+    if (System.platform()=="windows") {
+      system("del /f /q ${Folder.normalizePath(pattern)} >nul 2>&1")
+    } else system("rm -f ${pattern}")
+  }
+
   clean() {
-    system("rm ${self.fname}*.png")
-    system("rm ${self.fname}*.pov")
+    self._remove("${self.fname}*.png")
+    self._remove("${self.fname}*.pov")
   }
 }
